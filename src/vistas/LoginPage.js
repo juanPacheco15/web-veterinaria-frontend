@@ -5,12 +5,14 @@ import { API_URL } from '../otros/ConexionAPI';
 import Swal from 'sweetalert2';
 import { dataEncrypt } from '../utils/dataEncrypt';
 import { dataDecrypts } from '../utils/dataDecrypts';
+import { Helmet } from 'react-helmet';
+import favicon from '../img/logotipo.ico';
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
+    const tituloPestana = 'Veterinaria el potrillo';
     const handleLogin = (e) => {
         e.preventDefault();
         iniciarSesion();
@@ -62,6 +64,9 @@ function LoginPage() {
 
     return (
         <div className="login-container">
+            <Helmet>
+        <title>{tituloPestana}</title>
+      </Helmet>
             <div className="header">
                 <img src={process.env.PUBLIC_URL + '/imagenes/logotipo.jpg'} alt="Logo" />
             </div>

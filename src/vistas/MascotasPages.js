@@ -12,8 +12,8 @@ import AgregarMascotaModal from '../componentes/AgregarMascotaModal';
 function MascotasPages() {
     const navigate = useNavigate();
     const [Mascotas, setMascotas] = useState([]);
-    const [idMascotasEditar, setIdMascotasEditar] = useState(null);
-
+    // const [idMascotasEditar, setIdMascotasEditar] = useState(null);
+    const [idMascotaEditar, setIdMascotaEditar] = useState(null);
     const [modalAbierto, setModalAbierto] = useState(false);
     const abrirModal = () => { setModalAbierto(true); }
     const cerrarModal = () => { setModalAbierto(false); }
@@ -58,6 +58,8 @@ function MascotasPages() {
 
 
     const editarMascota = (idMascota) => {
+        setIdMascotaEditar(idMascota);
+        abrirModal();
         console.log(`Editar Mascota ${idMascota}`);
     }
 
@@ -73,7 +75,7 @@ function MascotasPages() {
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`${API_URL}/deletecita/${idMascota}`, {
+                fetch(`${API_URL}/deletemascota/${idMascota}`, {
                     method: 'DELETE'
                 }).then(response => response)
                     .then(data => {
@@ -99,8 +101,7 @@ function MascotasPages() {
             </div> */}
             <div className="contenedorBotones">
                 <Link to={"/home2"}><button className="boton" >Inicio</button></Link>
-                {/* <button className="boton" onClick={irBienvenida}>Inicio</button> */}
-                {/* <button className="boton" onClick={abrirModal}>Agregar</button> */}
+              
             </div>
             <div className='contenedorTabla'>
                 <table>
@@ -116,6 +117,7 @@ function MascotasPages() {
                             <th>Nombre Dueno</th>
                             <th>Direccion</th>
                             <th>Telefono</th>
+                            <th>Accion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -131,6 +133,10 @@ function MascotasPages() {
                                 <td>{cita.nombreDueno}</td>
                                 <td>{cita.direccion}</td>
                                 <td>{cita.telefono}</td>
+                                <td>
+                                    <button  onClick={() => editarMascota(cita.idMascota)}>Editar</button>
+                                    <button  onClick={() => eliminarMascota(cita.idMascota)}>Eliminar</button>
+                                </td>
 
                             </tr>
                         ))}
@@ -141,8 +147,11 @@ function MascotasPages() {
                 isOpen={modalAbierto}
                 onClose={cerrarModal}
                 onGuardar={(nuevaMascota) => registrarMascota(nuevaMascota)}
-                idMascotasEditar={idMascotasEditar}
+                idMascotaEditar={idMascotaEditar}
+                actualizarTabla={actualizarTabla}
             />
+
+            
         </div>
     );
 } else {
@@ -151,11 +160,6 @@ function MascotasPages() {
 
 }
 
-/*
-<td>
-    <button className='botonMini btnEditar' onClick={() => editarMascota(cita.idMascotas)}>Editar</button>
-    <button className='botonMini btnEliminar' onClick={() => eliminarMascota(cita.idMascota)}>Eliminar</button>
-</td>
-*/
+
 
 export default MascotasPages;

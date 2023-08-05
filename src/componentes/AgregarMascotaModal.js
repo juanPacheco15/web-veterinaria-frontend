@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Modal from 'react-modal';
 import "./AgregarMascotaModal.css";
 import TextFieldEditor from './TextFieldEditor';
@@ -6,8 +6,8 @@ import { API_URL } from '../otros/ConexionAPI';
 import Swal from 'sweetalert2';
 Modal.setAppElement('#root');
 
-function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
-    const idMascotas = idMascotasEditar;
+function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotaEditar,actualizarTabla }) {
+    const idMascota = idMascotaEditar;
     //Manejadores de Datos
     const [nombre, setNombre] = useState('');
     const [raza, setRaza] = useState('');
@@ -31,6 +31,37 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
     const [errorDireccion, setErrorDireccion] = useState(valorDefecto);
     const [errorTelefono, setErrorTelefono] = useState(valorDefecto);
 
+    useEffect(() => {
+        if (idMascota) {
+            fetch(`${API_URL}/getmascota/${idMascota}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(mascota => {
+                        actualizarNombre(mascota.nombre);
+                        actualizarRaza(mascota.raza);
+                        actualizarColor(mascota.color);
+                        actualizarNacimiento(mascota.nacimiento);
+                        actualizarEdad(mascota.edad);
+                        actualizarPeso(mascota.peso);
+                        actualizarNombreDueno(mascota.nombreDueno);
+                        actualizarDireccion(mascota.direccion);
+                        actualizarTelefono(mascota.telefono);
+                        actualizarErrorNombre(false);
+                        actualizarErrorRaza(false);
+                        actualizarErrorColor(false);
+                        actualizarErrorNacimiento(false);
+                        actualizarErrorEdad(false);
+                        actualizarErrorPeso(false);
+                        actualizarErrorNombreDueno(false);
+                        actualizarErrorDireccion(false);
+                        actualizarErrorTelefono(false);
+                        
+                    });
+                })
+                .catch(error => { console.error(error); });
+        }
+    },// [idProducto]
+    );
     const handleGuardar = () => {
         // let puesto = document.getElementById("puesto").selectedOptions[0].text;
         if (errorNombre || errorRaza || errorColor || errorNacimiento || errorEdad || errorPeso || errorNombreDueno || errorDireccion || errorTelefono) {
@@ -42,15 +73,15 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
                 timer: 500
             });
         } else {
-            if (idMascotas) {
+            if (idMascota) {
                 const mascotaModificada = {
-                    idMascotas: idMascotas, nombre: nombre, raza: raza, color: color, nacimiento: nacimiento, edad: edad, peso: peso, nombreDueno: nombreDueno, direccion: direccion, telefono: telefono,
+                    idMascota: idMascota, nombre: nombre, raza: raza, color: color, nacimiento: nacimiento, edad: edad, peso: peso, nombreDueno: nombreDueno, direccion: direccion, telefono: telefono,
                 };
-                fetch(`${API_URL}/updatemascota`, {
+                fetch(`${API_URL}/updatemascota:`, {
                     method: 'PUT', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(mascotaModificada)
                 }).then(response => response.json())
-                    .then(data => { })
+                    .then(data => {  actualizarTabla()})
                     .catch(error => console.error(error));
             } else {
                 const mascotaNueva = {
@@ -157,10 +188,9 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
                         id="nacimiento"
                         label="Nacimiento"
                         value={nacimiento}
-
                         maxLength={10}
-                        validator={/^[0-9]+$/}
-                        errorMessage="Solo numero"
+                        validator={/^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/}
+                        errorMessage="formato de fecha invalido favor de ingresar dd/mm/aaaa"
                         onChange={actualizarNacimiento}
                         actualizarError={actualizarErrorNacimiento}
                     />
@@ -168,7 +198,6 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
                         id="edad"
                         label="Edad"
                         value={edad}
-                        // minLength={3}
                         maxLength={3}
                         validator={/^[0-9]+$/}
                         errorMessage="Formato de nombre inválido"
@@ -179,10 +208,9 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
                         id="peso"
                         label="Peso"
                         value={peso}
-
                         maxLength={16}
-                        validator={/^[0-9]+$/}
-                        errorMessage="Solo numeros y letras"
+                        validator={/^[+-]?(\d{1,3}(,\d{3})*|(\d+))(\.\d+)?( [A-Za-z]{1,3})?$/}
+                        errorMessage="Solo numeros"
                         onChange={actualizarPeso}
                         actualizarError={actualizarErrorPeso}
                     />
@@ -190,7 +218,6 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
                         id="nombreDueno"
                         label="Nombre Dueño"
                         value={nombreDueno}
-
                         maxLength={16}
                         validator={/^[A-Z][a-z]*([ ][A-Z][a-z]*)+$/}
                         errorMessage="Solo letras con la primera mayuscula"
@@ -201,7 +228,6 @@ function AgregarMascotaModal({ isOpen, onClose, onGuardar, idMascotasEditar }) {
                         id="direccion"
                         label="Direccion"
                         value={direccion}
-
                         maxLength={20}
                         validator={/^[A-Z][a-z]*([ ][A-Z][a-z]*)?$/}
                         errorMessage="Formato de nombre inválido"

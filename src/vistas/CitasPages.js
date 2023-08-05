@@ -39,13 +39,6 @@ function CitasPages() {
 }
 }
 
-/*
-<AgregarCitaModal
-    isOpen={modalAbierto}
-    onClose={cerrarModal}
-    onGuardar={(nuevaCita) => registrarCita(nuevaCita)}
-    idCitasEditar={idCitasEditar}
-/>
-*/
+
 
 export default CitasPages;

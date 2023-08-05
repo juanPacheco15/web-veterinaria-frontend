@@ -11,7 +11,7 @@ import DetalleVenta from "./vistas/DetalleVenta";
 import DetalleGanancia from "./vistas/DetalleGanancia";
 import Citas from "./vistas/CitasPages";
 import CitasPages from "./vistas/CitasPages";
-
+import { Helmet } from 'react-helmet';
 function App() {
   return (
     <Router>
