@@ -1,0 +1,92 @@
+.ReactModal__Content.myEstilo {
+    margin-inline: 10vw;
+    margin-block: 10vh;
+    border-radius: 20px;
+    border: 3px solid black;
+    background-color: aliceblue;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(10, 150, 80);
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.modal-content {
+    margin: 10px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: aliceblue;
+    display: block;
+    max-height: 68vh;
+    overflow: auto;
+}
+
+.modal-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form {
+    /*
+    display: block;
+    columns: 2;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*gap: 20px;*/
+    column-gap: 20px;
+}
+
+.modal-form>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(10, 150, 80);
+    margin-bottom: 10px;
+}
+
+.modal-form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(10, 150, 80);
+    margin-bottom: 10px;
+    width: 16em;
+}
+
+.modal-button {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    margin-inline: 2vw;
+    width: 10em;
+}
+
+.centrado {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}

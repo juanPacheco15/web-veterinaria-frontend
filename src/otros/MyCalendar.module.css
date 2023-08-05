@@ -1,0 +1,95 @@
+.MyCalendar {
+    background-color: rgb(221, 229, 252);
+    height: 500px;
+}
+
+.column {
+    width: 14.28%;
+    /*Incluye el ancho del borde y el padding en el ancho total*/
+    box-sizing: border-box;
+}
+
+.cabeceraCalendario {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh;
+    user-select: none;
+    font-weight: bold;
+}
+
+.tituloActual {
+    font-size: x-large;
+}
+
+.botonCalendario {
+    background-color: aliceblue;
+    color: black;
+    margin-inline: 5px;
+}
+
+.botonCalendario.selected {
+    background-color: rgb(229, 176, 253);
+    color: black;
+}
+
+.th {
+    width: 12.5%;
+    /*14.28*/
+    text-align: center;
+    user-select: none;
+}
+
+.td {
+    text-align: center;
+    user-select: none;
+    height: 60px;
+}
+
+/*
+.td:nth-of-type(7n+1) {
+    color: darkred;
+    font-weight: bolder;
+    border: 2px solid brown;
+    background-color: rgb(218, 177, 177);
+}*/
+
+.currentMonth {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.otherMonth {
+    background-color: lightgray;
+    border: none;
+}
+
+/*
+.otherMonth.td:nth-of-type(7n+1) {
+    background-color: rgb(167, 146, 146);
+    border: 2px solid brown;
+}*/
+
+.today {
+    background-color: rgb(252, 242, 112);
+    font-weight: bolder;
+    color: darkcyan;
+}
+
+.otherMonth.today {
+    background-color: rgb(185, 179, 85);
+    font-weight: bolder;
+    color: darkcyan;
+}
+
+.hourCell {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(200, 255, 200);
+    user-select: none;
+}
+
+.cita {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}

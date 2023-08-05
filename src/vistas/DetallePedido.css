@@ -1,0 +1,85 @@
+.contenedorPage {
+    margin: 1vh;
+    height: 70vh;
+}
+
+.contenedorBotones {
+    display: flex;
+    /*justify-content: flex-end;*/
+    justify-content: space-between;
+    /*margin-bottom: 1vh;*/
+    padding: 2vh;
+    /*margin-bottom: 20px;*/
+}
+.contenedor-busqueda-empleado{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    /* position: absolute; */
+    margin-top: -50px;
+    margin-left: 500px;
+    /* border: 1px solid black; */
+    /* margin-top: 70px; */
+}
+.input-busqueda-empleados{
+    border: 1px solid black;
+}
+
+.boton {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 8em;
+    /*margin-left: 2em;*/
+}
+
+.botonMini {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 5em;
+    margin-left: 0.5em;
+    margin-block: 0.1em;
+}
+
+
+.btnEditar {
+    background-color: goldenrod;
+}
+
+.btnEliminar {
+    background-color: purple;
+}
+
+.contenedorTabla {
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+
+table th,
+table td {
+    border: 2px solid rgb(0, 0, 0);
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: rgb(10, 150, 80);
+    color: white;
+}

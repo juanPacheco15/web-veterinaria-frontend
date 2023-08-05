@@ -1,0 +1,43 @@
+.contenedorPage {
+    margin: 1vh;
+    height: 70vh;
+}
+
+.contenedorBienvenida {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 5em;
+    height: 83vh;
+}
+
+.img {
+    /*width: 15vh;*/
+    width: 7em;
+}
+
+.top-left {
+    position: absolute;
+    top: 16vh;
+    left: 13vw;
+}
+
+
+.top-right {
+    position: absolute;
+    top: 16vh;
+    right: 1vw;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 1vh;
+    left: 13vw;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+}

@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2vw;
+    /*height: 150px;*/
+    height: 15vh;
+    background-color: rgb(164, 95, 0);
+}
+
+.header img {
+    width: 15vh;
+}
+
+.userview {
+    margin-inline: 1vw;
+    display: block;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.userview img {
+    width: 9vh;
+}
+
+.nameUser {
+    font-size: 1.5em;
+    color: aliceblue;
+}

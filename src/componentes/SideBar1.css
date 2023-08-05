@@ -1,0 +1,57 @@
+.cuerpo {
+    display: flex;
+    height: 85vh;
+    width: 100%;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*padding: 10px;*/
+    background-color: rgb(164, 95, 0);
+    width: 12vw;
+    height: 85vh;
+}
+
+.botonera {
+    margin-top: 5vh;
+    margin-inline: 1vw;
+}
+
+.botonera button {
+    margin-bottom: 3vh;
+    padding: 5px 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 10vw;
+    height: 6vh;
+}
+
+.botonera button.imagenButton {
+    margin-top: 5vh;
+    height: 13vh;
+    background-color: transparent;
+}
+
+.botonera button.selected {
+    background-color: rgb(222, 156, 104)
+}
+
+.botonera button.disabled {
+    background-color: rgb(182, 175, 170)
+}
+
+.botonera button img {
+    width: 75%;
+    height: 100%;
+}
+
+.content {
+    flex: 1;
+    /*padding: 10px;*/
+}
