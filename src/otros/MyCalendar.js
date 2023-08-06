@@ -17,8 +17,8 @@ const MyCalendar = () => {
     const [selectedHour, setSelectedHour] = useState(null);
     const [viewSelected, setViewSelected] = useState("MES");
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const startHour = 9;
-    const endHour = 14;
+    const startHour = 10;
+    const endHour = 15;
 
     const getMonthDays = () => {
         const monthStart = startOfMonth(currentMonth);
